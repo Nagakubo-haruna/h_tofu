@@ -32,6 +32,7 @@ def main():
     print('Detecting sound...')
     while True:
         print('Sound value: {0}'.format(sensor.sound))　#画面出力
+        
         time.sleep(60*10) #10分間隔で取得
  
 if __name__ == '__main__':

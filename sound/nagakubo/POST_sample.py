@@ -1,9 +1,13 @@
+# サーバーにPOST送信
+# 引用　http://independence-sys.net/main/?p=3922
+# タイムスタンプつきで送る
+
 import requests
 import json
  
 from datetime import datetime
  
-def uploadSensorValues(temp, hum, press):
+def uploadSensorValues(temp, hum, press):#引数は温度湿度気圧の３つ
  
     url = 'http://yourdomain/subsub/sensvalues.php'
  

@@ -12,8 +12,8 @@ db = firestore.client()
 #タイムスタンプ取得
 now= datetime.datetime.now()
 #データ''追加
-doc_ref = db.collection(u'sound').document(u'ID')
+doc_ref = db.collection(u'sound').document()
 doc_ref.set({
     u'volume': 1,
-    u'time': u'%Y_%H:%M:%S'.format(now)
+    u'time': str(now)
 })

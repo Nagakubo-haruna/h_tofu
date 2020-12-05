@@ -4,6 +4,12 @@ using System.Runtime.InteropServices;
 public class JSTest: MonoBehaviour
 {
 
+    // ---- 追加 -------
+    [DllImport("__Internal")]
+    private static extern void FireStore();
+    // ---- 追加 -------
+
+
     [DllImport("__Internal")]
     private static extern void Hello();
 
@@ -25,6 +31,10 @@ public class JSTest: MonoBehaviour
     // スタート時に呼ばれる
     void Start()
     {
+        //追加
+        FireStore();
+
+
         // 関数呼び出し
         Hello();
 

@@ -20,8 +20,8 @@ def load_mac():
         scan.append(mac)
         
     return scan
-    
-if __name__=='__main__':
+
+def count():
     data = load_register()
     catch_mac()
     scan = load_mac()
@@ -30,6 +30,9 @@ if __name__=='__main__':
     for i in scan:
         if i in data:
             mem += 1
-            print(f'{i} is in the room!')
+    return mem
     
+    
+if __name__=='__main__':
+    mem = count()
     print(f'now tatal members: {mem}')

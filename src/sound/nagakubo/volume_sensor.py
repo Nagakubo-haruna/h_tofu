@@ -1,4 +1,4 @@
-#仕様デバイス
+#使用デバイス
 #GROVE　SoundSensor と　Raspberry Pi
 #音センサデータ取得　引用https://wiki.seeedstudio.com/Grove-Sound_Sensor/
 

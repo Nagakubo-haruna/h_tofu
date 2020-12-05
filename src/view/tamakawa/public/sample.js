@@ -1,13 +1,35 @@
-﻿mergeInto(LibraryManager.library, {
+mergeInto(LibraryManager.library, {
 
   // Initialize Cloud Firestore through Firebase
-  firebase.initializeApp({
-  apiKey: '### FIREBASE API KEY ###',
-  authDomain: '### FIREBASE AUTH DOMAIN ###',
-  projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+  // firebase.initializeApp({
+  // apiKey: '### FIREBASE API KEY ###',
+  // authDomain: '### FIREBASE AUTH DOMAIN ###',
+  // projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+  // });
+
+  const admin = require('firebase-admin');
+  var serviceAccount = require("./config/htohu-881c2-firebase-adminsdk-m6g1v-607ecca66a.json");
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
   });
 
-  var db = firebase.firestore();
+  var data;
+  var db = admin.firestore();
+  db.collection('users').get()
+    .then((snapshot) => {
+        snapshot.forEach((doc) => {
+            console.log(doc.id, '=>', doc.data());
+            data = doc.data()
+        });
+    })
+    .catch((err) => {
+        console.log('Error getting documents', err);
+    });
+
+  Firestore: function (data){
+    // return data
+    window.alert('data:' + data);
+  },
 
   // 関数呼び出し
   Hello: function () {

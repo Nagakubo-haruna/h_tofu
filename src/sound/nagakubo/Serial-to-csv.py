@@ -7,14 +7,15 @@ ser.open()
 
 listdata=[]
 
+
 def main():
     while True:
         count = 0
         # data = ser.readline()
         # print(data)
         while count < 2:
-            listdata = ser.readline()
-           # listdata.append(int(data))
+            data = ser.readline()
+            listdata.append(int(data))
             print (listdata)
             count += 1
 

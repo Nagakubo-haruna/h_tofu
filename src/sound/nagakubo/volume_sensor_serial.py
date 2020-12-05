@@ -2,6 +2,7 @@
 #esp32からの受信　引用https://umiushi.hateblo.jp/entry/2019/12/11/225643
 #serial通信で受信し、それをfirestoreに送信
 
+
 import serial
 import numpy as np
 
@@ -33,18 +34,9 @@ db = firestore.client()
 
 listdata=[]
 listtime=[]
-    
-while True:
-    #sound sensor　データ取得
-    data = ser.readline()
-    listdata.append(int(data))
-    #a= volume.isdigit()
-    #print(a)
-    print(listdata)
-    #タイムスタンプ取得
-    now= datetime.datetime.now()
-    listtime.append(now)
-    #データ''追加
+count = 0;  
+#データ''追加
+def DataSend(listdata,listtime,x,y):
     doc_ref = db.collection(u'sound').document(u'id_3')
     doc_ref.set({
         u'volume': listdata,
@@ -53,3 +45,31 @@ while True:
         u'position_y':y
     })
 
+def main():
+
+    while True:
+        #sound sensor　データ取得
+        data = ser.readline()
+        listdata.append(int(data))
+        #a= volume.isdigit()
+        #print(a)
+        print(listdata)
+
+        #タイムスタンプ取得
+        now= datetime.datetime.now()
+        listtime.append(now)
+        DataSend(listdata,listtime,x,y)
+        #データ''追加
+    #     doc_ref = db.collection(u'sound').document(u'id_3')
+    #     doc_ref.set({
+    #         u'volume': listdata,
+    #         u'time': listtime,
+    #         u'position_x':x,
+    #         u'position_y':y
+    # })
+
+try:
+    main()
+
+except KeyboardInterrupt:
+    np.savetxt('data.txt',listdata)

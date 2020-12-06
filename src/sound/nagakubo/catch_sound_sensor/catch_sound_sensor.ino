@@ -9,8 +9,9 @@ int i;
 void loop() {
   // put your main code here, to run repeatedly:
   int sum=0;
-  int count =0;
-  for(i=0;i<10;i++){
+  /*sum = analogRead(SoundSensor);
+  delay(1000);*/
+  for(i=0;i<60;i++){
     sum += analogRead(SoundSensor);
     delay(1000);
   }

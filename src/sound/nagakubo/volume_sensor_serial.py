@@ -18,14 +18,14 @@ ser.open()
 
 #部屋の位置座標
 # #id_1
-# x=0
-# y=0.5
+x=0.5
+y=0
 # #id_2
 # x=0
 # y=1
 # #id_3
-x=1
-y=1
+# x=1
+# y=1
 #Cloud Firestore SDK初期化
 cred = credentials.Certificate('htohu-881c2-firebase-adminsdk-m6g1v-607ecca66a.json')
 firebase_admin.initialize_app(cred)
@@ -37,7 +37,7 @@ listtime=[]
 count = 0;  
 #データ''追加
 def DataSend(listdata,listtime,x,y):
-    doc_ref = db.collection(u'sound').document(u'id_3')
+    doc_ref = db.collection(u'sound').document(u'id_1')
     doc_ref.set({
         u'volume': listdata,
         u'time': listtime,
@@ -46,11 +46,11 @@ def DataSend(listdata,listtime,x,y):
     })
 
 def main():
-
     while True:
         #sound sensor　データ取得
         data = ser.readline()
         listdata.append(int(data))
+
         #a= volume.isdigit()
         #print(a)
         print(listdata)
@@ -58,16 +58,9 @@ def main():
         #タイムスタンプ取得
         now= datetime.datetime.now()
         listtime.append(now)
-        DataSend(listdata,listtime,x,y)
-        #データ''追加
-    #     doc_ref = db.collection(u'sound').document(u'id_3')
-    #     doc_ref.set({
-    #         u'volume': listdata,
-    #         u'time': listtime,
-    #         u'position_x':x,
-    #         u'position_y':y
-    # })
-
+        
+        DataSend(listdata,listtime,x,y)#データ取得
+    
 try:
     main()
 

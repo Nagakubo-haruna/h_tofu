@@ -19,13 +19,13 @@ def main():
     
     (x, y), vol_max = estimate_sound(id_1, id_2, id_3)
     
-    base = np.zeros((100, 100))
+    base = np.zeros((150, 150))
     
     if x!=None:
         
         gauss_size = (50, 50)
         y = mk_gaussian(gauss_size, scale=2)
-        base[(int(x*100)-(gauss_size[0]//2)):(int(x*100)+(gauss_size[0]//2)), (int(x*100)-(gauss_size[0]//2)):(int(x*100)+(gauss_size[0]//2))] += y
+        base[(int(x*100)-(gauss_size[0]//2)+25):(int(x*100)+(gauss_size[0]//2)+25), (int(x*100)-(gauss_size[0]//2)+25):(int(x*100)+(gauss_size[0]//2)+25)] += y
         base /= base.max()
         
     sns.set()
@@ -38,14 +38,14 @@ def main():
     
     #fig.patch.set_facecolor('white')
     
-    plt.plot(id_1['position_x']*100, id_1['position_y']*100, marker='.', color='red', markersize=20)
-    plt.annotate('id_1', xy=(id_1['position_x']*100, id_1['position_y']*100), fontsize=20, color='red')
-    plt.plot(id_2['position_x']*100, id_2['position_y']*100, marker='.', color='red', markersize=20)
-    plt.annotate('id_2', xy=(id_2['position_x']*100, id_2['position_y']*100), fontsize=20, color='red')
-    plt.plot(id_3['position_x']*100, id_3['position_y']*100, marker='.', color='red', markersize=20)
-    plt.annotate('id_3', xy=(id_3['position_x']*100, id_3['position_y']*100), fontsize=20, color='red')
-    plt.xlim((0, 100))
-    plt.ylim((0, 100))
+    plt.plot(id_1['position_x']*100+25, id_1['position_y']*100+25, marker='.', color='red', markersize=20)
+    plt.annotate('id_1', xy=(id_1['position_x']*100+25, id_1['position_y']*100+25), fontsize=20, color='red')
+    plt.plot(id_2['position_x']*100+25, id_2['position_y']*100+25, marker='.', color='red', markersize=20)
+    plt.annotate('id_2', xy=(id_2['position_x']*100+25, id_2['position_y']*100+25), fontsize=20, color='red')
+    plt.plot(id_3['position_x']*100+25, id_3['position_y']*100+25, marker='.', color='red', markersize=20)
+    plt.annotate('id_3', xy=(id_3['position_x']*100+20, id_3['position_y']*100+25), fontsize=20, color='red')
+    plt.xlim((25, 125))
+    plt.ylim((25, 125))
     plt.tick_params(labelbottom=False,
                    labelleft=False,
                    labelright=False,
@@ -69,7 +69,7 @@ def main():
         
     store_roomdata(dumper)
         
-    store_image('static/soundmap.png')
+    #store_image('static/soundmap.png')
     
         
 if __name__=='__main__':

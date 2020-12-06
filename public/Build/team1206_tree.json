@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "temah_toufu",
+"productVersion": "0.2",
+"dataUrl": "team1206_tree.data.unityweb",
+"wasmCodeUrl": "team1206_tree.wasm.code.unityweb",
+"wasmFrameworkUrl": "team1206_tree.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.2f1"
+}

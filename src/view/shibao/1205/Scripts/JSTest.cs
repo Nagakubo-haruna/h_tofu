@@ -3,6 +3,12 @@ using System.Runtime.InteropServices;
 
 public class JSTest: MonoBehaviour
 {
+    // ---- 追加 -------
+    [DllImport("__Internal")]
+    private static extern void FireStore();
+    // ---- 追加 -------
+
+
 
     [DllImport("__Internal")]
     private static extern void Hello();
@@ -22,11 +28,20 @@ public class JSTest: MonoBehaviour
     [DllImport("__Internal")]
     private static extern void BindWebGLTexture(int texture);
 
+    //
+    public void LoadVolume(int volume){
+        Debug.Log(volume);
+        //ここに処理書く
+    }
+
     // スタート時に呼ばれる
     void Start()
     {
-        // 関数呼び出し
+        // 
         Hello();
+        //追加
+        FireStore();
+
 
         // 数値型の引数と戻り値
         int result = AddNumbers(5, 7);
@@ -43,7 +58,7 @@ public class JSTest: MonoBehaviour
         Debug.Log(StringReturnValueFunction());
 
         // WebGLテクスチャのバインド
-        var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
-        BindWebGLTexture(texture.GetNativeTextureID());
+        //var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+        //BindWebGLTexture(texture.GetNativeTextureID());
     }
 }

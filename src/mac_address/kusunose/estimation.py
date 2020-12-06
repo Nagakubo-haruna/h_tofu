@@ -4,7 +4,8 @@ import numpy as np
 from PIL import Image
 import seaborn as sns
 
-from connect_firestore import load_sound
+from connect_firestore import load_sound, store_roomdata, store_image
+#from connect_storage import store_image
 from fetch_MAC import count
 from gaussian import mk_gaussian
 from treat_sounds import estimate_sound
@@ -65,6 +66,11 @@ def main():
     dumper['sound']['id_3'] = id_3['volume'][-1]
     with open('room_data.json', 'w') as f:
         json.dump(dumper, f, indent=4)
+        
+    store_roomdata(dumper)
+        
+    store_image('soundmap.png')
+    
         
 if __name__=='__main__':
     main()

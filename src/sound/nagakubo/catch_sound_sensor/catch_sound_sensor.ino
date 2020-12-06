@@ -15,7 +15,7 @@ void loop() {
     sum += analogRead(SoundSensor);
     delay(1000);
   }
-  sum=sum/i;//10秒の平均
+  sum=sum/i;//0秒の平均
   Serial.println(sum);
   
 }

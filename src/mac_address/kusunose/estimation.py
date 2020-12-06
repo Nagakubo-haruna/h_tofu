@@ -69,7 +69,7 @@ def main():
         
     store_roomdata(dumper)
         
-    store_image('soundmap.png')
+    store_image('static/soundmap.png')
     
         
 if __name__=='__main__':

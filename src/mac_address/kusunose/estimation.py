@@ -56,7 +56,7 @@ def main():
                    top=False)
     #if x!=None:
     #    plt.plot(x, y, marker='o', color='red', markersize=80, markerfacecolor="None", markeredgecolor='red', markeredgewidth=2)
-    plt.savefig('soundmap')
+    plt.savefig('static/soundmap.png')
     
     dumper = {}
     dumper['members'] = member

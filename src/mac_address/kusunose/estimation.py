@@ -24,8 +24,8 @@ def main():
     if x!=None:
         
         gauss_size = (50, 50)
-        y = mk_gaussian(gauss_size, scale=2)
-        base[(int(x*100)-(gauss_size[0]//2)+25):(int(x*100)+(gauss_size[0]//2)+25), (int(x*100)-(gauss_size[0]//2)+25):(int(x*100)+(gauss_size[0]//2)+25)] += y
+        g = mk_gaussian(gauss_size, scale=2)
+        base[(int(y*100)-(gauss_size[0]//2)+25):(int(y*100)+(gauss_size[0]//2)+25), (int(x*100)-(gauss_size[0]//2)+25):(int(x*100)+(gauss_size[0]//2)+25)] += g
         base /= base.max()
         
     sns.set()

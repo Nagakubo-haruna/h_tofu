@@ -6,16 +6,20 @@ void setup() {
   Serial.begin(9600);
 }
 int i;
+int volume=0;
 void loop() {
   // put your main code here, to run repeatedly:
   int sum=0;
-  /*sum = analogRead(SoundSensor);
+  /*volume = analogRead(SoundSensor);
   delay(1000);*/
-  for(i=0;i<60;i++){
+  for(i=0;i<5;i++){
     sum += analogRead(SoundSensor);
+    //Serial.println(sum);
     delay(1000);
   }
-  sum=sum/i;//10秒の平均
-  Serial.println(sum);
+  //Serial.println(i);
+  sum=sum/i;//5秒の平均
   
+  Serial.println(sum);
+  sum=0;
 }

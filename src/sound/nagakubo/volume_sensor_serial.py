@@ -32,18 +32,19 @@ firebase_admin.initialize_app(cred)
     
 db = firestore.client()
 
+#listdata=[442,324,257,31,29,101,421,502,520,553,608,638,220,24]
 listdata=[]
 listtime=[]
 count = 0;  
 #データ''追加
-def DataSend(listdata,listtime,x,y):
-    doc_ref = db.collection(u'sound').document(u'id_1')
-    doc_ref.set({
-        u'volume': listdata,
-        u'time': listtime,
-        u'position_x':x,
-        u'position_y':y
-    })
+# def DataSend(listdata,listtime,x,y):
+#     doc_ref = db.collection(u'sound').document(u'id_1')
+#     doc_ref.set({
+#         u'volume': listdata,
+#         u'time': listtime,
+#         u'position_x':x,
+#         u'position_y':y
+#     })
 
 def main():
     while True:
@@ -51,15 +52,23 @@ def main():
         data = ser.readline()
         listdata.append(int(data))
 
-        #a= volume.isdigit()
-        #print(a)
-        print(listdata)
+        # #a= volume.isdigit()
+        # #print(a)
+        # print(listdata)
 
         #タイムスタンプ取得
         now= datetime.datetime.now()
         listtime.append(now)
-        
-        DataSend(listdata,listtime,x,y)#データ取得
+        #print(listtime)
+        #DataSend(listdata,listtime,x,y)#データ取得
+
+        doc_ref = db.collection(u'sound').document(u'id_1')
+        doc_ref.set({
+            u'volume': listdata,
+            u'time': listtime,
+            u'position_x':x,
+            u'position_y':y
+    })
     
 try:
     main()
